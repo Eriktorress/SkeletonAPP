@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inicio de sessión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label autocomplete="username"
+    position="floating">Usuario</ion-label>
+    <ion-input [(ngModel)]="user.name"> </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label 
+    position="floating">Contraseña</ion-label>
+    <ion-input type="password" required
+    minlength="8" maxlength="8"
+    >  </ion-input>
+  </ion-item>
+
+  <ion-button color="dark" expand="block" [routerLink]="['/home']">
+    Ingresar
+  </ion-button>
+
+</ion-content>
