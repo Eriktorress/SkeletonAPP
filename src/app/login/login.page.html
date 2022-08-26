@@ -6,19 +6,15 @@
 
 <ion-content>
   <ion-item>
-    <ion-label autocomplete="username"
-    position="floating">Usuario</ion-label>
-    <ion-input [(ngModel)]="user.name"> </ion-input>
+    <ion-label position="floating">Usuario</ion-label>
+    <ion-input [(ngModel)]="user.usuario"> </ion-input>
   </ion-item>
   <ion-item>
-    <ion-label 
-    position="floating">Contraseña</ion-label>
-    <ion-input type="password" required
-    minlength="8" maxlength="8"
-    >  </ion-input>
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input type="password" required minlength="8" maxlength="8" [(ngModel)]="user.password"> </ion-input>
   </ion-item>
 
-  <ion-button color="dark" expand="block" [routerLink]="['/home']">
+  <ion-button color="dark" expand="block" (click)="ingresar()">
     Ingresar
   </ion-button>
 
