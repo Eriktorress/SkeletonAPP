@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-certificaciones',
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./certificaciones.component.scss'],
 })
 export class CertificacionesComponent implements OnInit {
-
+  
   constructor() { }
-
+  
+  
   ngOnInit() {}
-
-}
+  
+  }

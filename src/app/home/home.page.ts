@@ -28,4 +28,10 @@ export class HomePage {
       } else { this.router.navigate(["/login"]) } // Si no tiene extra la navegacion actual navegar al login
     });
   }
+  segmentChanged($event){
+    console.log($event.detail.value);
+    let direction=$event.detail.value
+    this.router.navigate(['home/'+direction])
+  }
 }
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-experiencia',
@@ -7,8 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperienciaComponent implements OnInit {
 
-  constructor() { }
+  expe = {
+    empresa: "",
+    anoinicio: "",
+    anotermino: "",
+    cargo: ""
 
-  ngOnInit() {}
+  }
+
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+  }
+  ingresar() {
+    // Se declara e instancia un elemento de tipo NavigationExtras
+    let navigationExtras: NavigationExtras = {
+      state: {
+        user: this.expe // Al estado se asignamos un objeto con clave y valor
+      }
+    };
+    this.router.navigate(['/misdatos'], navigationExtras); // navegamos hacia el misdatos y enviamos información adicional
+  }
 
 }
