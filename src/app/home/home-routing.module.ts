@@ -5,11 +5,13 @@ import { ExperienciaComponent } from '../experiencia/experiencia.component';
 import { MisdatosComponent } from '../misdatos/misdatos.component';
 import { HomePage } from './home.page';
 
+
 const routes: Routes = [
   {
     path: '',
     component: HomePage,
     children:[
+<<<<<<< HEAD
     {
       path:'certificaciones',
       component:CertificacionesComponent
@@ -25,6 +27,25 @@ const routes: Routes = [
   ]
 },
 
+=======
+      {
+        path:'/experiencia',
+        component: ExperienciaComponent
+
+      },
+      {
+        path:'/certificaciones',
+        component: CertificacionesComponent
+
+      },
+      {
+        path:'/misdatos',
+        component: MisdatosComponent
+      },
+
+    ]
+  },
+>>>>>>> 651362d1e2817db843ba2d95401d67194f3c409b
 ];
 
 @NgModule({
