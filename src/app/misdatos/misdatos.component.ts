@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './misdatos.component.html',
   styleUrls: ['./misdatos.component.scss'],
 })
-
 export class MisdatosComponent {
   data: any; 
 
@@ -16,7 +15,7 @@ export class MisdatosComponent {
       if (this.router.getCurrentNavigation().extras.state) { // Validamos que en la navegacion actual tenga extras
         this.data = this.router.getCurrentNavigation().extras.state.expe; // Si tiene extra rescata lo enviado
         console.log(this.data) // Muestra por consola lo traido
-      } else { this.router.navigate(["/experiencia"]) } // Si no tiene extra la navegacion actual navegar al login
+      } else { this.router.navigate(["/"]) } // Si no tiene extra la navegacion actual navegar al login
     });
   }
 }

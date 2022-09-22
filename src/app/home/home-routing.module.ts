@@ -19,7 +19,7 @@ const routes: Routes = [
         component: ExperienciaComponent
       },
       {
-        path:'perfil',
+        path:'misdatos',
         component: MisdatosComponent
       }
     ]

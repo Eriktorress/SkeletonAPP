@@ -24,7 +24,7 @@ export class ExperienciaComponent implements OnInit {
     // Se declara e instancia un elemento de tipo NavigationExtras
     let navigationExtras: NavigationExtras = {
       state: {
-        user: this.expe // Al estado se asignamos un objeto con clave y valor
+        expe: this.expe // Al estado se asignamos un objeto con clave y valor
       }
     };
     this.router.navigate(['/misdatos'], navigationExtras); // navegamos hacia el misdatos y enviamos información adicional
