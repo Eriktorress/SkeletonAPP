@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './misdatos.component.html',
   styleUrls: ['./misdatos.component.scss'],
 })
+
 export class MisdatosComponent {
   data: any; 
 
