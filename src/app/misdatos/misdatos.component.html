@@ -1,5 +1,19 @@
+ion-card>
+  <ion-card-header>
+    <ion-card-title>Experiencia laboral</ion-card-title>
+  </ion-card-header>
 
- <ion-item>
-  <ion-label class="label1"> {{data.empresa}}</ion-label>
-</ion-item>
+  <ion-card-content>
+    <ion-item>
+      <ion-label position="stacked">Empresa</ion-label>
+      <ion-input [(ngModel)]="expe.empresa"></ion-input>
+      <ion-label position="stacked">Año Inicio</ion-label>
+      <ion-input type="number" [(ngModel)]="expe.anoinicio"></ion-input>
+      <ion-label position="stacked">Año Termino</ion-label>
+      <ion-input type="number" [(ngModel)]="expe.anotermino" ></ion-input>
+      <ion-label position="stacked">Cargo</ion-label>
+      <ion-input [(ngModel)]="expe.cargo" ></ion-input>
+    </ion-item>
+    <ion-button (click)="createPost()"> boton</ion-button>
+  </ion-card-content>
 
