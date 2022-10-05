@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Geolocation, Geoposition } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomePage {
    * : Indica que el identificador sera de la clase posterior a los : puntos
    * 
    */
-  constructor(private activeroute: ActivatedRoute, private router: Router) {
+  constructor(private activeroute: ActivatedRoute, private router: Router, public geolocation:Geolocation) {
     // Se llama a la ruta activa y se obtiene sus parametros mediante una subscripcion
     this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
       if (this.router.getCurrentNavigation().extras.state) { // Validamos que en la navegacion actual tenga extras
@@ -32,6 +33,15 @@ export class HomePage {
     console.log($event.detail.value);
     let direction=$event.detail.value
     this.router.navigate(['home/'+direction])
+  }
+  ngAfterViewInit(){
+    this.geolocationNative();
+  }
+  geolocationNative (){
+    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
+
+      console.log(geoposition)
+    })
   }
 }
 

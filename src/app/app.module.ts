@@ -14,6 +14,7 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
 import { DbtaskService } from './service/dbtask.service';
 import { AuthGardService } from './service/auth-gard.service';
 import { AuthenticationService } from './service/authentication.service';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { AuthenticationService } from './service/authentication.service';
     DbtaskService,
     AuthGardService,
     AuthenticationService,
+    Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
