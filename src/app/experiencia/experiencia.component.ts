@@ -27,7 +27,7 @@ export class ExperienciaComponent implements OnInit {
         expe: this.expe // Al estado se asignamos un objeto con clave y valor
       }
     };
-    this.router.navigate(['/misdatos'], navigationExtras); // navegamos hacia el misdatos y enviamos información adicional
+    this.router.navigate(['/'], navigationExtras); // navegamos hacia el misdatos y enviamos información adicional
   }
 
 }

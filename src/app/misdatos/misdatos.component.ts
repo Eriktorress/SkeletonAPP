@@ -1,36 +1,59 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../service/api.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-misdatos',
+  selector: 'app-mis-datos',
   templateUrl: './misdatos.component.html',
   styleUrls: ['./misdatos.component.scss'],
 })
-export class MisdatosComponent {
-  data: any;
+export class MisdatosComponent implements OnInit {
 
-  constructor(private activeroute: ActivatedRoute, private router: Router, private api: ApiService) {
-    // Se llama a la ruta activa y se obtiene sus parametros mediante una subscripcion
-    this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
-      if (this.router.getCurrentNavigation().extras.state) { // Validamos que en la navegacion actual tenga extras
-        this.data = this.router.getCurrentNavigation().extras.state.expe; // Si tiene extra rescata lo enviado
-        console.log(this.data) // Muestra por consola lo traido
-      } else { this.router.navigate(["/"]) } // Si no tiene extra la navegacion actual navegar al login
-      this.api.getPosts().subscribe((res) => { console.log(res[0]); }, (error) => { console.log(error); });
 
-    });
+  ngOnInit() {}
+  usuario:String;
+  niveles:any[]=[
+    {id:1,nivel:"Basica Incompleta"},
+    {id:2,nivel:"Basica Completa"},
+    {id:3,nivel:"Media Incompleta"},
+    {id:4,nivel:"Media Completa"},
+    {id:5,nivel:"Media Incompleta"},
+    {id:6,nivel:"Superior Completa"}
+  ]
+  data:any={
+    nombre:"",
+    apellido:"",
+    education:"",
+    nacimiento:""
+  };
+  constructor(public alertController: AlertController) {
+
   }
-  createPost() {
-    var post = {
-      title: 'titulo prueba',
-      body: 'algun cuerpo del post',
-      userId: 1
+  /**
+   * Metodo limpíar recorre un objeto y se define el 
+   * valor de su propiedad en ""
+   */
+  limpiar(){
+    for (var [key, value] of Object.entries(this.data)) {
+      Object.defineProperty(this.data,key,{value:""})
     }
-    this.api.createPost(post).subscribe((success) => {
-      console.log(success);
-    }, error => {
-      console.log(error);
-    })
+  }
+
+  mostrar(){
+    // IF
+    (this.data.nombre!="" && this.data.apellido!="") &&
+    // THEN 
+    this.presentAlert("Usuario","Su nombre es "+this.data.nombre+" "+this.data.apellido) ||
+    // ELSE 
+    this.presentAlert("Usuario","No ingreso nada");
+  }
+
+  async presentAlert(titulo:string,message:string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

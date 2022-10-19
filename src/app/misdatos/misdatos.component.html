@@ -1,19 +1,50 @@
-ion-card>
-  <ion-card-header>
-    <ion-card-title>Experiencia laboral</ion-card-title>
-  </ion-card-header>
 
-  <ion-card-content>
-    <ion-item>
-      <ion-label position="stacked">Empresa</ion-label>
-      <ion-input [(ngModel)]="expe.empresa"></ion-input>
-      <ion-label position="stacked">Año Inicio</ion-label>
-      <ion-input type="number" [(ngModel)]="expe.anoinicio"></ion-input>
-      <ion-label position="stacked">Año Termino</ion-label>
-      <ion-input type="number" [(ngModel)]="expe.anotermino" ></ion-input>
-      <ion-label position="stacked">Cargo</ion-label>
-      <ion-input [(ngModel)]="expe.cargo" ></ion-input>
-    </ion-item>
-    <ion-button (click)="createPost()"> boton</ion-button>
-  </ion-card-content>
-
+<!-- Comienza el Content -->
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-title class="ion-padding-top ion-text-center">
+    <ion-label>
+      <h1>Bienvenido</h1>
+      <!-- {{interpolacion}} 
+          Permite mostrar los datos desde el script a la visual
+          verificar el data en el home.page.ts
+        -->
+      <p *ngIf="usuario">Usuario: {{usuario}}</p>
+    </ion-label>
+  </ion-title>
+  <b class="ion-text-center">
+    <h4>Información Adicional</h4>
+  </b>
+  <ion-item class="ion-padding-horizontal">
+    <ion-label position="stacked">Nombre</ion-label>
+    <ion-input type="text" [(ngModel)]="data.nombre"></ion-input>
+  </ion-item>
+  <ion-item class="ion-padding-horizontal">
+    <ion-label position="stacked">Apellido</ion-label>
+    <ion-input type="text" [(ngModel)]="data.apellido"></ion-input>
+  </ion-item>
+  <ion-item class="ion-padding-horizontal">
+    <ion-label position="stacked" class="ion-padding-bottom">Educación</ion-label>
+    <ion-select placeholder="Seleccione nivel" [(ngModel)]="data.education">
+      <ion-select-option *ngFor="let niv of niveles" [value]="niv.id">{{niv.nivel}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="ion-padding-horizontal">
+    <ion-label position="stacked" class="ion-padding-bottom">Fecha Nacimiento</ion-label>
+    <ion-input type="date" [(ngModel)]="data.nacimiento"></ion-input>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-button shape="block" (click)="limpiar()">
+          Limpiar
+        </ion-button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-button shape="block" (click)="mostrar()">
+          Mostrar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<!-- Termina el Content -->

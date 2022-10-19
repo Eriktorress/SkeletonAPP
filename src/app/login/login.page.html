@@ -1,21 +1,52 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Inicio de sessión</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-item>
-    <ion-label position="floating">Usuario</ion-label>
-    <ion-input [(ngModel)]="user.usuario"> </ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Contraseña</ion-label>
-    <ion-input type="password" required minlength="8" maxlength="8" [(ngModel)]="user.password"> </ion-input>
-  </ion-item>
-
-  <ion-button color="dark" expand="block" (click)="ingresar()">
-    Ingresar
-  </ion-button>
-
+  <!-- 
+    Se establece un titulo que este separadp de del <ion-content>
+    mediante el class ion-padding-top
+    y que el texto <ion-label> y su contenido este centrado
+    mediante el class ion-text-center
+    See: https://ionicframework.com/docs/layout/css-utilities#text-alignment
+    See: https://ionicframework.com/docs/layout/css-utilities#element-padding
+  -->
+  <ion-title class="ion-padding-top ion-text-center">
+    <ion-label>
+      <h1>SkeletonAPP</h1>
+      <p>Aqui comienza todo</p>
+    </ion-label>
+  </ion-title>
+  <!--
+    Se genera una divición donde estara el contenido del login
+    para esto se utilizara ion-padding-vertical que aplica un
+    relleno arriba y abajo de 16px por defecto
+    See: https://ionicframework.com/docs/layout/css-utilities#element-padding
+  -->
+  <div class="ion-padding-vertical">
+    <!--
+      Se establece un card que contendra un titulo
+      y un contenido
+    -->
+    <ion-card class="ion-text-center">
+      <ion-card-title class="ion-text-center">
+        <ion-label>
+          <h1>Bienvenido!</h1>
+        </ion-label>
+      </ion-card-title>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input type="text" [(ngModel)]="login.Usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" >Password</ion-label>
+          <!--
+            El type Password inmediatamente pasa lo que uno
+            escribe a *****
+          -->
+          <ion-input type="password" [(ngModel)]="login.Password"></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-button shape="block" (click)="ingresar()">Ingresar</ion-button>
+      <ion-button shape="block" (click)="registrar()">Registrarse</ion-button>
+    </ion-card>
+  </div>
+  
 </ion-content>

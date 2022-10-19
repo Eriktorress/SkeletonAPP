@@ -6,6 +6,12 @@
     <ion-title>
       <ion-label class="label1"> {{data.usuario}}</ion-label>
     </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="logout()" color="danger" fill="outline">
+        Salir
+        <ion-icon slot="end" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
   <ion-toolbar>
     <ion-segment value="misdatos" (ionChange)="segmentChanged($event)">

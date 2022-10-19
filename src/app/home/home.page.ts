@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Geolocation, Geoposition } from '@awesome-cordova-plugins/geolocation/ngx';
+import { DbtaskService } from '../service/dbtask.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,7 @@ export class HomePage {
    * : Indica que el identificador sera de la clase posterior a los : puntos
    * 
    */
-  constructor(private activeroute: ActivatedRoute, private router: Router, public geolocation:Geolocation) {
+  constructor(private activeroute: ActivatedRoute, private router: Router, public geolocation:Geolocation, public dbtaskService: DbtaskService, public authenticationService:AuthenticationService) {
     // Se llama a la ruta activa y se obtiene sus parametros mediante una subscripcion
     this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
       if (this.router.getCurrentNavigation().extras.state) { // Validamos que en la navegacion actual tenga extras
@@ -32,7 +34,22 @@ export class HomePage {
   segmentChanged($event){
     console.log($event.detail.value);
     let direction=$event.detail.value
-    this.router.navigate(['home/'+direction])
+    this.router.navigate(['home/'+direction]);
+  }
+  /**
+   * Antes de que se muestre la visual
+   * se redirecciona a la url especifica
+   */
+  ionViewWillEnter(){
+    this.router.navigate(['home/misdatos']);
+  }
+  /**
+   * Función que permite cerrar la sesión actual
+   * actualiza el sesion_data de SQLite
+   */
+  logout(){
+    this.authenticationService.logout()
+  /**
   }
   ngAfterViewInit(){
     this.geolocationNative();
@@ -41,7 +58,7 @@ export class HomePage {
     this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
 
       console.log(geoposition)
-    })
+    }) */
   }
 }
 
